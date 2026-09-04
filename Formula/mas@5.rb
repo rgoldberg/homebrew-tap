@@ -1,9 +1,9 @@
-class Mas < Formula
+class MasAT5 < Formula
   desc "Mac App Store command-line interface"
   homepage "https://github.com/mas-cli/mas"
   url "https://github.com/mas-cli/mas.git",
-      tag:      "v7.0.0",
-      revision: "7c70ffdfd9f71a654300a78b3b627782e6abe1b4"
+      tag:      "v5.2.0",
+      revision: "e84c0658e1dfff2fd1eaf0fc8ef338a2a99b8f67"
   license "MIT"
   head "https://github.com/mas-cli/mas.git", branch: "main"
 
@@ -13,15 +13,16 @@ class Mas < Formula
   end
 
   bottle do
-    root_url "https://github.com/mas-cli/homebrew-tap/releases/download/mas-7.0.0"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "e39380cc90259310f77ae70171811ecb0d02ca253e87e62630522456b3b709f9"
-    sha256 cellar: :any_skip_relocation, ventura:       "988079b61bf6418215b0e230939ca8bdd2f0e070fe3aeb56ac6c7d7d06d86f1d"
+    root_url "https://github.com/mas-cli/homebrew-tap/releases/download/mas-5.2.0"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "b6791f3e8f1ce976ea6e9d605cb8dee9786ea637e74a0fc5eab4a5402da713c4"
+    sha256 cellar: :any_skip_relocation, ventura:       "1bfe9aad61ce75ce29527d0344331051eb3ee05be7ace62853f699801f4ac111"
   end
+
+  keg_only :versioned_formula
 
   depends_on :macos
 
   uses_from_macos "swift" => :build, since: :sequoia # swift 6.2+
-  uses_from_macos "jq", since: :sequoia
 
   on_sequoia :or_newer do
     depends_on xcode: ["26.0", :build]
@@ -30,11 +31,10 @@ class Mas < Formula
   def install
     ENV["MAS_DIRTY_INDICATOR"] = ""
     system "Scripts/build", "#{tap&.name}/#{name}", "--disable-sandbox", "-c", "release"
-    (libexec/"bin").install ".build/release/mas"
-    bin.install "Scripts/mas"
+    bin.install ".build/release/mas"
     system "swift", "package", "--disable-sandbox", "generate-manual"
     man1.install ".build/plugins/GenerateManual/outputs/mas/mas.1"
-    bash_completion.install "contrib/completion/mas.bash" => "mas"
+    bash_completion.install "contrib/completion/mas-completion.bash" => "mas"
     fish_completion.install "contrib/completion/mas.fish"
   end
 
