@@ -18,7 +18,7 @@ class MasAT1 < Formula
     sha256 cellar: :any_skip_relocation, high_sierra:   "c221899822f317dafe6d2e711055585278a2fdda8acb624030ff530059b5c5a4"
   end
 
-  conflicts_with "mas", "mas@prerelease", because: "both install `mas` binaries"
+  conflicts_with "mas", because: "both install `mas` binaries"
 
   depends_on :macos
 

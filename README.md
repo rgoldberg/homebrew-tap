@@ -4,20 +4,19 @@ mas Homebrew formulae with bottles for older macOS versions.
 
 ## Formula Selection
 
-A formula exists for each mas major version, for current mas & for prerelease
-mas:
+A versioned formula exists for each mas major version. The `mas` formula is an
+alias for the current versioned formula:
 
-| Formula        | macOS Versions |
-|:---------------|:---------------|
-| mas@1          | 10.13+         |
-| mas@2          | 10.15+         |
-| mas@3          | 10.15+         |
-| mas@4          | 10.15+         |
-| mas@5          | 13+            |
-| mas@6          | 13+            |
-| mas@7          | 13+            |
-| mas            | 13+            |
-| mas@prerelease | 13+            |
+| Formula | macOS Versions |
+|:--------|:---------------|
+| mas@1   | 10.13+         |
+| mas@2   | 10.15+         |
+| mas@3   | 10.15+         |
+| mas@4   | 10.15+         |
+| mas@5   | 13+            |
+| mas@6   | 13+            |
+| mas@7   | 13+            |
+| mas     | 13+            |
 
 ## Installation
 
