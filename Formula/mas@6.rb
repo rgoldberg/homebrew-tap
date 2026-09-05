@@ -18,7 +18,7 @@ class MasAT6 < Formula
     sha256 cellar: :any_skip_relocation, ventura:       "b0f7e3e85c8798b476de5636ac98506ab1d045261e0ac863015bb8f44a2f097f"
   end
 
-  keg_only :versioned_formula
+  conflicts_with "mas", "mas@prerelease", *(1..5).map { "mas@#{_1}" }, because: "both install `mas` binaries"
 
   depends_on :macos
 

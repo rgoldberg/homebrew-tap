@@ -18,7 +18,7 @@ class MasAT3 < Formula
     sha256 cellar: :any_skip_relocation, catalina:      "de19df280191cbffd60a33d9cc04b6044096571aa96b0b6a028ae043781ae154"
   end
 
-  keg_only :versioned_formula
+  conflicts_with "mas", "mas@prerelease", *(1..2).map { "mas@#{_1}" }, because: "both install `mas` binaries"
 
   depends_on :macos
 

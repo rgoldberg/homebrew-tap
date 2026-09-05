@@ -18,6 +18,8 @@ class MasAT7 < Formula
     sha256 cellar: :any_skip_relocation, ventura:       "988079b61bf6418215b0e230939ca8bdd2f0e070fe3aeb56ac6c7d7d06d86f1d"
   end
 
+  conflicts_with "mas", "mas@prerelease", *(1..6).map { "mas@#{_1}" }, because: "both install `mas` binaries"
+
   depends_on :macos
 
   uses_from_macos "swift" => :build, since: :sequoia # swift 6.2+
