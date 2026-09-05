@@ -18,7 +18,7 @@ class MasAT5 < Formula
     sha256 cellar: :any_skip_relocation, ventura:       "1bfe9aad61ce75ce29527d0344331051eb3ee05be7ace62853f699801f4ac111"
   end
 
-  conflicts_with "mas", *(1..4).map { "mas@#{_1}" }, because: "both install `mas` binaries"
+  conflicts_with "homebrew/core/mas", "mas", *(1..4).map { "mas@#{_1}" }, because: "both install `mas` binaries"
 
   depends_on :macos
 
